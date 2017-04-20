@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Peice from './Peice';
+import Piece from './Piece';
 import Pin from './Pin';
 
 class GuessRow extends Component {
@@ -7,10 +7,10 @@ class GuessRow extends Component {
     return (
       <div>
           <div class='piece-group' style={{display:'inline'}}>
-            <Peice />
-            <Peice />
-            <Peice />
-            <Peice />
+            <Piece />
+            <Piece />
+            <Piece />
+            <Piece />
           </div>
           <div class='pin-group' style={{display:'inline-block'}}>
             <div class='pin-row' style={{display:'inline'}}>

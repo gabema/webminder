@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Peice extends Component {
+class Piece extends Component {
   render() {
     return (
       <div style={this.colorClass()}>
@@ -16,4 +16,4 @@ class Peice extends Component {
   }
 }
 
-export default Peice;
+export default Piece;

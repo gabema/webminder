@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import Peice from './Peice';
+import Piece from './Piece';
 
 class Trey extends Component {
   render() {
     return (
       <div>
-        <Peice color="Red" />
-        <Peice color="Blue" />
-        <Peice color="White" />
-        <Peice color="Black" />
-        <Peice color="Purple" />
-        <Peice color="Yellow" />
-        <Peice color="Green" />
+        <Piece color="Red" />
+        <Piece color="Blue" />
+        <Piece color="White" />
+        <Piece color="Black" />
+        <Piece color="Purple" />
+        <Piece color="Yellow" />
+        <Piece color="Green" />
       </div>
     );
   }
