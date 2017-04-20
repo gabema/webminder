@@ -1,0 +1,17 @@
+.piece-group {
+    display: inline;
+}
+
+.pin-group {
+    display: inline-block;
+}
+
+.pin-row {
+    display: inline;
+}
+
+.guess-row {
+    display: inline-block;
+    border  : 1px solid black;
+    background: lightgray;
+}

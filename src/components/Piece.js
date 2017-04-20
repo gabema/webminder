@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
+import './Piece.css';
 
 class Piece extends Component {
   render() {
     return (
-      <div style={this.colorClass()}>
+      <div className='piece' style={this.colorClass()}>
           &#x25A0;
       </div>
     );
   }
   colorClass() {
     return {
-      display: 'inline',
       color: this.props.color,
     };
   }

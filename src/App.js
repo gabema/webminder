@@ -14,16 +14,16 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <AnswerRow piece1='Red' piece2='blue' piece3='green' piece4='yellow' />
-        <GuessRow />
-        <GuessRow />
-        <GuessRow />
-        <GuessRow />
-        <GuessRow />
-        <GuessRow />
-        <GuessRow />
-        <GuessRow />
-        <GuessRow />
-        <GuessRow />
+        <GuessRow /><br/>
+        <GuessRow /><br/>
+        <GuessRow /><br/>
+        <GuessRow /><br/>
+        <GuessRow /><br/>
+        <GuessRow /><br/>
+        <GuessRow /><br/>
+        <GuessRow /><br/>
+        <GuessRow /><br/>
+        <GuessRow /><br/>
         <Trey />
       </div>
     );

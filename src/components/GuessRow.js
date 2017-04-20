@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
 import Piece from './Piece';
 import Pin from './Pin';
+import './GuessRow.css';
 
 class GuessRow extends Component {
   render() {
     return (
-      <div>
-          <div class='piece-group' style={{display:'inline'}}>
+      <div className='guess-row'>
+          <div className='piece-group'>
             <Piece />
             <Piece />
             <Piece />
             <Piece />
           </div>
-          <div class='pin-group' style={{display:'inline-block'}}>
-            <div class='pin-row' style={{display:'inline'}}>
+          <div className='pin-group'>
+            <div className='pin-row'>
                 <Pin />
                 <Pin />
             </div>
             <br/>
-            <div class='pin-row' style={{display:'inline'}}>
+            <div className='pin-row'>
                 <Pin />
                 <Pin />
             </div>
