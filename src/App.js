@@ -5,6 +5,8 @@ import AnswerRow from './components/AnswerRow';
 import GuessRow from './components/GuessRow';
 import Trey from './components/Trey';
 
+// (See Board) https://facebook.github.io/react/tutorial/tutorial.html
+
 class App extends Component {
   render() {
     return (
