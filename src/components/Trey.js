@@ -5,15 +5,16 @@ class Trey extends Component {
   render() {
     return (
       <div>
-        <Piece color="Red" />
-        <Piece color="Blue" />
-        <Piece color="White" />
-        <Piece color="Black" />
-        <Piece color="Purple" />
-        <Piece color="Yellow" />
-        <Piece color="Green" />
+        {this.toPieces()}
       </div>
     );
+  }
+
+  toPieces() {
+    let pieces = this.props.pieces || [];
+    return pieces.map(function(element) {
+      return <Piece color={element} key={element} />
+    }, this);
   }
 }
 

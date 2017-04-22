@@ -8,10 +8,10 @@ class GuessRow extends Component {
     return (
       <div className='guess-row'>
           <div className='piece-group'>
-            <Piece />
-            <Piece />
-            <Piece />
-            <Piece />
+            <Piece color={this.props.piece1} />
+            <Piece color={this.props.piece2} />
+            <Piece color={this.props.piece3} />
+            <Piece color={this.props.piece4} />
           </div>
           <div className='pin-group'>
             <div className='pin-row'>

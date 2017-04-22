@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import AnswerRow from './components/AnswerRow';
-import GuessRow from './components/GuessRow';
-import Trey from './components/Trey';
+import Board from './components/Board';
 
 // (See Board) https://facebook.github.io/react/tutorial/tutorial.html
 
@@ -15,18 +13,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <AnswerRow piece1='Red' piece2='blue' piece3='green' piece4='yellow' />
-        <GuessRow /><br/>
-        <GuessRow /><br/>
-        <GuessRow /><br/>
-        <GuessRow /><br/>
-        <GuessRow /><br/>
-        <GuessRow /><br/>
-        <GuessRow /><br/>
-        <GuessRow /><br/>
-        <GuessRow /><br/>
-        <GuessRow /><br/>
-        <Trey />
+        <Board />
       </div>
     );
   }
