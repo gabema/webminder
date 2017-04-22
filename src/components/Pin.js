@@ -1,19 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Pin extends Component {
-  render() {
-    return (
-      <div style={this.colorClass()}>
-          &#x25CB;
-      </div>
-    );
-  }
-  colorClass() {
-    return {
-      display: 'inline',
-      color: this.props.color,
-    };
-  }
+function Pin(props) {
+  return (
+    <div style={{ display: 'inline', color: props.color}}>
+        &#x25CB;
+    </div>
+  );
 }
 
 export default Pin;

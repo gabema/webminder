@@ -1,21 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Piece from './Piece';
 
-class Trey extends Component {
-  render() {
-    return (
-      <div>
-        {this.toPieces()}
-      </div>
-    );
-  }
+function toPieces(props) {
+  let pieces = props.pieces || [];
+  return pieces.map(function(element) {
+    return <Piece color={element} key={element} />
+  }, this);
+}
 
-  toPieces() {
-    let pieces = this.props.pieces || [];
-    return pieces.map(function(element) {
-      return <Piece color={element} key={element} />
-    }, this);
-  }
+function Trey(props) {
+  return (
+      <div>
+        {toPieces(props)}
+      </div>    
+  );
 }
 
 export default Trey;

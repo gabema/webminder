@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Piece from './Piece';
 import Pin from './Pin';
 import './GuessRow.css';
 
-class GuessRow extends Component {
-  render() {
+function GuessRow(props) {
     return (
       <div className='guess-row'>
           <div className='piece-group'>
-            <Piece color={this.props.piece1} />
-            <Piece color={this.props.piece2} />
-            <Piece color={this.props.piece3} />
-            <Piece color={this.props.piece4} />
+            <Piece color={props.piece1} />
+            <Piece color={props.piece2} />
+            <Piece color={props.piece3} />
+            <Piece color={props.piece4} />
           </div>
           <div className='pin-group'>
             <div className='pin-row'>
@@ -26,7 +25,6 @@ class GuessRow extends Component {
           </div>
       </div>
     );
-  }
 }
 
 export default GuessRow;

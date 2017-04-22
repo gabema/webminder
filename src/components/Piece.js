@@ -1,19 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Piece.css';
 
-class Piece extends Component {
-  render() {
+function Piece(props) {
     return (
-      <div className='piece' style={this.colorClass()}>
+      <div className='piece' style={{color: props.color}} >
           &#x25A0;
       </div>
     );
-  }
-  colorClass() {
-    return {
-      color: this.props.color,
-    };
-  }
 }
 
 export default Piece;
