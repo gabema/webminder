@@ -17,10 +17,10 @@ class Board extends Component {
               piece4: 'yellow'
           },
           guesses: [
-              {}, {}, {piece3: 'blue'}, {}, {},
-              {piece1: 'red'}, {}, {}, {}, {}
+              {}, {}, {}, {}, {},
+              {}, {}, {}, {}, {}
           ],
-          trey: ['Red', 'Blue', 'White', 'Black', 'Purple', 'Yellow', 'Green']
+          trey: ['red', 'blue', 'white', 'black', 'purple', 'yellow', 'green']
       };
   }
 
@@ -35,11 +35,31 @@ class Board extends Component {
   }
 
   expandGuessRows() {
-      return this.state.guesses.map(function(guess, index){
-          let row = [<GuessRow key={index} piece1={guess.piece1} piece2={guess.piece2} piece3={guess.piece3} piece4={guess.piece4} />, <br/>];
-          return row;
+      return this.state.guesses.map(function(guess, index) {
+          return [<GuessRow key={index} index={index} piece1={guess.piece1} piece2={guess.piece2} piece3={guess.piece3} piece4={guess.piece4} onPieceClicked={(color, pieceName, index) => this.rowPieceClicked(color, pieceName, index)}/>, <br/>];
       }, this);
   }
+
+  rowPieceClicked(color, pieceName, index) {
+      let currentColor = this.state.guesses[index][pieceName];
+      let newColor;
+      if (!color) {
+          color = this.state.trey[0];
+      }
+      if (color === currentColor) {
+          let count = this.state.trey.length;
+          let index = this.state.trey.findIndex(treyColor => treyColor === color);
+          newColor = this.state.trey[(index + 1) % count];
+      } else {
+          newColor = color;
+      }
+      let newProp = {};
+      newProp[pieceName] = newColor;
+      let newGuessRow = Object.assign({}, this.state.guesses[index], newProp);
+      let guesses = Object.assign([], this.state.guesses);
+      guesses[index] = newGuessRow;
+      this.setState(Object.assign({}, this.state, {guesses: guesses}));
+    }
 }
 
 export default Board;
