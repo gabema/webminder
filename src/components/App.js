@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import Board from './Board';
+import ActiveGame from '../containers/ActiveGame';
 
 // (See Board) https://facebook.github.io/react/tutorial/tutorial.html
 
 const App = () => (
       <div className="App">
-        <Board />
+        <ActiveGame />
       </div>
 );
 

@@ -1,66 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import AnswerRow from './AnswerRow';
 import GuessRow from './GuessRow';
 import Trey from './Trey';
 
-// (See Board) https://facebook.github.io/react/tutorial/tutorial.html
+const expandGuessRows = (guesses, rowPieceClicked) => guesses.map(function(guess, index) {
+    let pins = ['red'].fill(null, 0, 3);
+    return [
+        <GuessRow
+            key={index}
+            index={index}
+            piece1={guess.piece1}
+            piece2={guess.piece2}
+            piece3={guess.piece3}
+            piece4={guess.piece4}
+            pins={pins}
+            onPieceClicked={(color, pieceName, index) => rowPieceClicked(color, pieceName, index)}/>,
+        <br/>
+    ];
+});
 
-class Board extends Component {
-  constructor() {
-      super();
+const Board = ({answer, guesses, trey, rowPieceClicked}) => (
+    <div>
+    <AnswerRow piece1={answer.piece1} piece2={answer.piece2} piece3={answer.piece3} piece4={answer.piece4} />
+    {expandGuessRows(guesses, rowPieceClicked)}
+    <Trey pieces={trey} />
+    </div>
+);
 
-      this.state = {
-          answer: {
-              piece1: 'red',
-              piece2: 'blue',
-              piece3: 'green',
-              piece4: 'yellow'
-          },
-          guesses: [
-              {}, {}, {}, {}, {},
-              {}, {}, {}, {}, {}
-          ],
-          trey: ['red', 'blue', 'white', 'black', 'purple', 'yellow', 'green']
-      };
-  }
-
-  render() {
-    return (
-      <div>
-        <AnswerRow piece1='Red' piece2='blue' piece3='green' piece4='yellow' />
-        {this.expandGuessRows()}
-        <Trey pieces={this.state.trey} />
-      </div>
-    );
-  }
-
-  expandGuessRows() {
-      return this.state.guesses.map(function(guess, index) {
-          let pins = ['red'].fill(null, 0, 3);
-          return [<GuessRow key={index} index={index} piece1={guess.piece1} piece2={guess.piece2} piece3={guess.piece3} piece4={guess.piece4} pins={pins} onPieceClicked={(color, pieceName, index) => this.rowPieceClicked(color, pieceName, index)}/>, <br/>];
-      }, this);
-  }
-
-  rowPieceClicked(color, pieceName, index) {
-      let currentColor = this.state.guesses[index][pieceName];
-      let newColor;
-      if (!color) {
-          color = this.state.trey[0];
-      }
-      if (color === currentColor) {
-          let count = this.state.trey.length;
-          let index = this.state.trey.findIndex(treyColor => treyColor === color);
-          newColor = this.state.trey[(index + 1) % count];
-      } else {
-          newColor = color;
-      }
-      let newProp = {};
-      newProp[pieceName] = newColor;
-      let newGuessRow = Object.assign({}, this.state.guesses[index], newProp);
-      let guesses = Object.assign([], this.state.guesses);
-      guesses[index] = newGuessRow;
-      this.setState(Object.assign({}, this.state, {guesses: guesses}));
-    }
-}
+Board.PropTypes = {
+    answer: PropTypes.object,
+    guesses: PropTypes.array,
+    trey: PropTypes.array
+};
 
 export default Board;
