@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Pin = ({color}) => (
     <div style={{ display: 'inline', color: color}}>
-        &#x25CB;
+        &#x25CF;
     </div>
 );
 

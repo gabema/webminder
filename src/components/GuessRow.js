@@ -4,7 +4,9 @@ import Piece from './Piece';
 import Pin from './Pin';
 import './GuessRow.css';
 
-const GuessRow = ({piece1, piece2, piece3, piece4, index, pins, onPieceClicked}) => (
+const colorValue = ['black', 'white', 'red'];
+
+const GuessRow = ({piece1, piece2, piece3, piece4, index, pins, onPieceClicked, onEvaluateRow}) => (
       <div className='guess-row'>
           <div className='piece-group'>
             <Piece color={piece1} onClick={(color) => onPieceClicked(color, 'piece1', index)} />
@@ -14,15 +16,16 @@ const GuessRow = ({piece1, piece2, piece3, piece4, index, pins, onPieceClicked})
           </div>
           <div className='pin-group'>
             <div className='pin-row'>
-                <Pin color={pins[0]}/>
-                <Pin color={pins[1]}/>
+                <Pin color={colorValue[pins[0] || 0]}/>
+                <Pin color={colorValue[pins[1] || 0]}/>
             </div>
             <br/>
             <div className='pin-row'>
-                <Pin color={pins[2]}/>
-                <Pin color={pins[3]}/>
+                <Pin color={colorValue[pins[2] || 0]}/>
+                <Pin color={colorValue[pins[3] || 0]}/>
             </div>
           </div>
+          <div onClick={() => onEvaluateRow(index)}>Evaluate</div>
       </div>
 );
 
@@ -33,7 +36,8 @@ GuessRow.propTypes = {
     piece4: PropTypes.string,
     index: PropTypes.number.isRequired,
     pins: PropTypes.arrayOf(PropTypes.string),
-    onPieceClicked: PropTypes.func
+    onPieceClicked: PropTypes.func,
+    onEvaluateRow: PropTypes.func
 };
 
 export default GuessRow;

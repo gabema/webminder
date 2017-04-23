@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { changePiece } from '../actions';
+import { changePiece, evaluateRow } from '../actions';
 import Board from '../components/Board';
 
 const mapStateToProps = (state) => {
@@ -12,7 +12,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    rowPieceClicked: (color, pieceName, index) => dispatch(changePiece(index, pieceName, color))
+    rowPieceClicked: (color, pieceName, index) => dispatch(changePiece(index, pieceName, color)),
+    evaluateRow: (index) => dispatch(evaluateRow(index))
   }
 };
 
