@@ -1,11 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function Pin(props) {
-  return (
-    <div style={{ display: 'inline', color: props.color}}>
+const Pin = ({color}) => (
+    <div style={{ display: 'inline', color: color}}>
         &#x25CB;
     </div>
-  );
-}
+);
+
+Pin.PropTypes = {
+  color: PropTypes.string
+};
 
 export default Pin;

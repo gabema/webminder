@@ -1,19 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Piece from './Piece';
 
-function toPieces(props) {
-  let pieces = props.pieces || [];
-  return pieces.map(function(element) {
-    return <Piece color={element} key={element} />
-  }, this);
-}
+const toPieces = (pieces) => (pieces || []).map(element => <Piece color={element} key={element} />);
 
-function Trey(props) {
-  return (
+const Trey = ({pieces}) => (
       <div>
-        {toPieces(props)}
-      </div>    
-  );
-}
+        {toPieces(pieces)}
+      </div>
+);
+
+Trey.PropTypes = {
+  pieces: PropTypes.arrayOf(PropTypes.string)
+};
 
 export default Trey;
