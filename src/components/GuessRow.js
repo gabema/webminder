@@ -14,13 +14,13 @@ function GuessRow(props) {
           </div>
           <div className='pin-group'>
             <div className='pin-row'>
-                <Pin />
-                <Pin />
+                <Pin color={props.pins[0]}/>
+                <Pin color={props.pins[1]}/>
             </div>
             <br/>
             <div className='pin-row'>
-                <Pin />
-                <Pin />
+                <Pin color={props.pins[2]}/>
+                <Pin color={props.pins[3]}/>
             </div>
           </div>
       </div>

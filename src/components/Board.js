@@ -36,7 +36,8 @@ class Board extends Component {
 
   expandGuessRows() {
       return this.state.guesses.map(function(guess, index) {
-          return [<GuessRow key={index} index={index} piece1={guess.piece1} piece2={guess.piece2} piece3={guess.piece3} piece4={guess.piece4} onPieceClicked={(color, pieceName, index) => this.rowPieceClicked(color, pieceName, index)}/>, <br/>];
+          let pins = ['red'].fill(null, 0, 3);
+          return [<GuessRow key={index} index={index} piece1={guess.piece1} piece2={guess.piece2} piece3={guess.piece3} piece4={guess.piece4} pins={pins} onPieceClicked={(color, pieceName, index) => this.rowPieceClicked(color, pieceName, index)}/>, <br/>];
       }, this);
   }
 
