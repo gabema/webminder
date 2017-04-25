@@ -24,7 +24,7 @@ const expandGuessRows = (guesses, rowPieceClicked, evaluateRow) => guesses.map(f
 
 const Board = ({answer, guesses, trey, rowPieceClicked, evaluateRow, resetGame}) => (
     <div>
-    <AnswerRow piece1={answer.piece1} piece2={answer.piece2} piece3={answer.piece3} piece4={answer.piece4} />
+    <AnswerRow piece1={answer.piece1} piece2={answer.piece2} piece3={answer.piece3} piece4={answer.piece4} showPieces={answer.showPieces} />
     {expandGuessRows(guesses, rowPieceClicked, evaluateRow)}
     <Trey pieces={trey} />
     <br/>

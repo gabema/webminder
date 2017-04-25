@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { changePiece, evaluateRow, resetGuesses, setAnswerRow, toggleRow } from '../actions';
+import { changePiece, checkShowAnswer, copyRow, evaluateRow, resetGuesses, setAnswerRow, toggleRow } from '../actions';
 import Board from '../components/Board';
 
 const mapStateToProps = (state) => {
@@ -17,6 +17,8 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(evaluateRow(index));
       dispatch(toggleRow(index));
       dispatch(toggleRow(index - 1));
+      dispatch(copyRow(index, index - 1));
+      dispatch(checkShowAnswer());
     },
     resetGame: () => {
       dispatch(resetGuesses());

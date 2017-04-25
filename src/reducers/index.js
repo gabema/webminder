@@ -1,11 +1,12 @@
-import { CHANGE_PIECE, EVALUATE_ROW, TOGGLE_ROW, RESET_GUESSES, SET_ANSWER_ROW } from '../actions';
+import { CHANGE_PIECE, EVALUATE_ROW, TOGGLE_ROW, RESET_GUESSES, SET_ANSWER_ROW, CHECK_SHOW_ANSWER, COPY_ROW } from '../actions';
 
 const initialBoardState = {
     answer: {
         piece1: 'red',
         piece2: 'blue',
         piece3: 'green',
-        piece4: 'yellow'
+        piece4: 'yellow',
+        showPieces: false,
     },
     guesses: [
         { pins:[] }, { pins:[] }, { pins:[] }, { pins:[] }, { pins:[] },
@@ -24,6 +25,20 @@ const guessRow = (state = {}, action) => {
             newPiece[action.pieceName] = action.newPiece;
             let newState = Object.assign({}, state, newPiece);
             return newState;
+        }
+        case COPY_ROW: {
+            if (state.piece1 === action.copyRow.piece1 && 
+                state.piece2 === action.copyRow.piece2 && 
+                state.piece3 === action.copyRow.piece3 && 
+                state.piece4 === action.copyRow.piece4)
+                return state;
+
+            return Object.assign({}, state, {
+                piece1: action.copyRow.piece1,
+                piece2: action.copyRow.piece2,
+                piece3: action.copyRow.piece3,
+                piece4: action.copyRow.piece4
+            });
         }
         case TOGGLE_ROW: {
             return Object.assign({}, state, {inPlay: !state.inPlay});
@@ -122,6 +137,31 @@ const board = (state = initialBoardState, action) => {
         }
         case RESET_GUESSES: {
             return Object.assign({}, state, {guesses: initialBoardState.guesses});
+        }
+        case CHECK_SHOW_ANSWER: {
+            let showPieces = state.guesses.reduce((showAnswer, {piece1, piece2, piece3, piece4, inPlay, pins}, index) => {
+                if (showAnswer) return true;
+                if (index === 0 && inPlay === false) return true;
+                if (!inPlay && pins.length === 4 && pins.every(pin => pin === 2)) return true;
+
+                return showAnswer;
+            }, false);
+            if (!!state.answer.showPieces !== showPieces) {
+                let answer = Object.assign({}, state.answer, {showPieces});
+                return Object.assign({}, state, {answer});
+            }
+            return state;
+        }
+        case COPY_ROW: {
+            // fromGuessRowIndex, toGuessRowIndex
+            let guessCount = state.guesses.length;
+            if ((action.fromGuessRowIndex < 0 || action.fromGuessRowIndex >= guessCount)
+                || (action.toGuessRowIndex < 0 || action.toGuessRowIndex >= guessCount)) {
+                return state;
+            }
+            let guesses = [...state.guesses];
+            guesses[action.toGuessRowIndex] = guessRow(state.guesses[action.toGuessRowIndex], Object.assign({}, action, {copyRow: state.guesses[action.fromGuessRowIndex]}));
+            return Object.assign({}, state, { guesses });
         }
         default:
             return state;
