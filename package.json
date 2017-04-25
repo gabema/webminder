@@ -2,6 +2,7 @@
   "name": "webminder",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://gabema.github.io/webminder",
   "dependencies": {
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
