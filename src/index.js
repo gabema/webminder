@@ -6,7 +6,8 @@ import './index.css';
 import App from './components/App';
 import webMinderApp from './reducers'
 
-// http://redux.js.org/docs/basics/ExampleTodoList.html
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
+OfflinePluginRuntime.install();
 
 let store = createStore(webMinderApp,
                         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

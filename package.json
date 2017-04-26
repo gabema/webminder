@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://gabema.github.io/webminder",
   "dependencies": {
+    "offline-plugin": "^4.7.0",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
