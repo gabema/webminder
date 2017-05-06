@@ -2,6 +2,15 @@
     display: inline;
 }
 
+.evalute-group {
+    display: inline-block;
+}
+
+.evalute-image {
+    width: 32px;
+    height: 32px;
+}
+
 .pin-group {
     display: inline-block;
 }

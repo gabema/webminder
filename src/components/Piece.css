@@ -1,4 +1,5 @@
 .piece {
     display: inline;
-    font-size: x-large;
+    font-size: 50pt;
+    margin: 5px;
 }
