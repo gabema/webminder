@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Piece from './Piece';
 import Pin from './Pin';
 import './GuessRow.css';
+import './common.css';
 import guess from '../../public/guess.png';
 
 const colorValue = ['black', 'white', 'red'];
@@ -15,7 +16,7 @@ const pieceHandler = (inPlay, onPieceClicked, piece, index) => {
 
 const showPinGroup = (inPlay, index, onEvaluateRow, pins) => 
     inPlay ? 
-    <div className='evalute-group' onClick={() => onEvaluateRow(index)}><img className="evalute-image" alt="Evaluate" src={guess} /></div> :
+    <div className='evalute-group' onClick={() => onEvaluateRow(index)}><img className="evalute-image noselect" alt="Evaluate" src={guess} /></div> :
     <div className='pin-group'>
         <div className='pin-row'>
             <Pin color={colorValue[pins[0] || 0]}/>

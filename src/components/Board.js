@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import AnswerRow from './AnswerRow';
 import GuessRow from './GuessRow';
 import Trey from './Trey';
+import './common.css';
 
 const expandGuessRows = (guesses, rowPieceClicked, evaluateRow) => guesses.map(function(guess, index) {
     return [
@@ -28,7 +29,7 @@ const Board = ({answer, guesses, trey, rowPieceClicked, evaluateRow, resetGame})
     {expandGuessRows(guesses, rowPieceClicked, evaluateRow)}
     <Trey pieces={trey} />
     <br/>
-    <div onClick={() => resetGame()}>New Game</div>
+    <div className="noselect" onClick={e => { e.preventDefault(); resetGame(); } }>New Game</div>
     </div>
 );
 
