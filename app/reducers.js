@@ -122,7 +122,7 @@ const board = (state = initialBoardState, action) => {
     }
     case 'EVALUATE_ROW': {
       const guesses = [...state.guesses];
-      const answer = state.answer;
+      const { answer } = state;
       guesses[action.guessRowIndex] = guessRow(state.guesses[action.guessRowIndex], Object.assign({}, action, { answer }));
       return Object.assign({}, state, { guesses });
     }
@@ -135,7 +135,7 @@ const board = (state = initialBoardState, action) => {
       return Object.assign({}, state, { guesses });
     }
     case 'SET_ANSWER_ROW': {
-      const trey = state.trey;
+      const { trey } = state;
       const answer = answerRow(state.answer, Object.assign({}, action, { trey }));
       if (state.answer !== answer) {
         return Object.assign({}, state, { answer });
@@ -160,7 +160,6 @@ const board = (state = initialBoardState, action) => {
       return state;
     }
     case 'COPY_ROW': {
-      // fromGuessRowIndex, toGuessRowIndex
       const guessCount = state.guesses.length;
       if ((action.fromGuessRowIndex < 0 || action.fromGuessRowIndex >= guessCount)
                 || (action.toGuessRowIndex < 0 || action.toGuessRowIndex >= guessCount)) {
