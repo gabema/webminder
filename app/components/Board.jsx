@@ -16,9 +16,9 @@ const expandGuessRows = (guesses, rowPieceClicked, evaluateRow) => guesses.map((
     pins={guess.pins}
     inPlay={guess.inPlay}
     onPieceClicked={
-        (color, pieceName, index) => rowPieceClicked(color, pieceName, index)
+        (color, pieceName, i) => rowPieceClicked(color, pieceName, i)
     }
-    onEvaluateRow={index => evaluateRow(index)}
+    onEvaluateRow={i => evaluateRow(i)}
   />, <br />,
 ]);
 

@@ -19,3 +19,9 @@ Clone this repo manually or use `brunch new dir -s brunch/with-redux`
     * `public/` dir is fully auto-generated and served by HTTP server. Write your code in `app/` dir.
     * Place static files you want to be copied from `app/assets/` to `public/`.
     * [Brunch site](http://brunch.io), [Getting started guide](https://github.com/brunch/brunch-guide#readme)
+
+## Differences between Brunch Redux+React Skeleton and create-react-app
+
+1. Test support (CRA has jest built in to the template)
+1. Differences in CSS / image packing via import statement
+1. Slight differences in project structure

@@ -6,10 +6,10 @@ const toggleRow = guessRowIndex => ({
   guessRowIndex,
 });
 
-const mapStateToProps = state => ({
-  answer: state.answer,
-  guesses: state.guesses,
-  trey: state.trey,
+const mapStateToProps = ({ answer, guesses, trey }) => ({
+  answer,
+  guesses,
+  trey,
 });
 
 const mapDispatchToProps = dispatch => ({
