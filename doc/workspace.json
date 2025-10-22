@@ -1,0 +1,182 @@
+{
+  "configuration" : { },
+  "description" : "Architecture documentation for My Project",
+  "documentation" : {
+    "decisions" : [ {
+      "content" : "# 1. Record architecture decisions\n\nDate: 2025-10-17\n\n## Status\n\nAccepted\n\n## Context\n\nWe need to record the architectural decisions made on this project.\n\n## Decision\n\nWe will use Architecture Decision Records, as [described by Michael Nygard](http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions). See additional info [here](../adr-info.md).\n\n## Consequences\n\nSee Michael Nygard's article, linked above. For a lightweight ADR toolset, see Nat Pryce's [adr-tools](https://github.com/npryce/adr-tools).\n",
+      "date" : "2025-10-17T00:00:00Z",
+      "format" : "Markdown",
+      "id" : "1",
+      "status" : "Accepted",
+      "title" : "Record architecture decisions"
+    }, {
+      "content" : "# 2. Use Excalidraw as a digital whiteboard\n\nDate: 2025-10-17\n\n## Status\n\nAccepted\n\n## Context\n\nProject white boarding and stickies are not shareable or trackable over time\n\n## Decision\n\nWe will use [Excalidraw](https://excalidraw.com) for sharing diagrams and save relevant renderings\nto the doc/diagrams/*.excalidraw for documentation purposes over time.\n\nWhen collaborating with multiple devs the online multiuser feature of Excalidraw can be used but any changes should be exported and stored in the repo.\n\n## Consequences\n\nLeveraging Excalidraw and retaining the excalidraw output in the repo will allow for architecture/design/collaboration to be retained and update as the project progresses.\n",
+      "date" : "2025-10-17T00:00:00Z",
+      "format" : "Markdown",
+      "id" : "2",
+      "status" : "Accepted",
+      "title" : "Use Excalidraw as a digital whiteboard"
+    } ]
+  },
+  "id" : 1,
+  "lastModifiedDate" : "2025-10-17T17:27:40Z",
+  "model" : {
+    "people" : [ {
+      "description" : "A person who uses the system",
+      "id" : "1",
+      "location" : "Unspecified",
+      "name" : "End User",
+      "properties" : {
+        "structurizr.dsl.identifier" : "user"
+      },
+      "relationships" : [ {
+        "description" : "Uses",
+        "destinationId" : "3",
+        "id" : "6",
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Uses",
+        "destinationId" : "2",
+        "id" : "7",
+        "linkedRelationshipId" : "6",
+        "sourceId" : "1"
+      } ],
+      "tags" : "Element,Person"
+    } ],
+    "softwareSystems" : [ {
+      "containers" : [ {
+        "documentation" : { },
+        "id" : "3",
+        "name" : "Web Application",
+        "properties" : {
+          "structurizr.dsl.identifier" : "webapp"
+        },
+        "relationships" : [ {
+          "description" : "Calls",
+          "destinationId" : "4",
+          "id" : "8",
+          "sourceId" : "3",
+          "tags" : "Relationship"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "Angular"
+      }, {
+        "documentation" : { },
+        "id" : "4",
+        "name" : "API Service",
+        "properties" : {
+          "structurizr.dsl.identifier" : "api"
+        },
+        "relationships" : [ {
+          "description" : "Reads/Writes",
+          "destinationId" : "5",
+          "id" : "9",
+          "sourceId" : "4",
+          "tags" : "Relationship"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : ".NET 8"
+      }, {
+        "documentation" : { },
+        "id" : "5",
+        "name" : "Database",
+        "properties" : {
+          "structurizr.dsl.identifier" : "db"
+        },
+        "tags" : "Element,Container",
+        "technology" : "PostgreSQL"
+      } ],
+      "description" : "The system we're building",
+      "documentation" : { },
+      "id" : "2",
+      "location" : "Unspecified",
+      "name" : "My Project",
+      "properties" : {
+        "structurizr.dsl.identifier" : "system"
+      },
+      "tags" : "Element,Software System"
+    } ]
+  },
+  "name" : "My Project Workspace",
+  "properties" : {
+    "structurizr.dsl" : "d29ya3NwYWNlICJNeSBQcm9qZWN0IFdvcmtzcGFjZSIgIkFyY2hpdGVjdHVyZSBkb2N1bWVudGF0aW9uIGZvciBNeSBQcm9qZWN0IiB7CgogICAgbW9kZWwgewogICAgICAgIHVzZXIgPSBwZXJzb24gIkVuZCBVc2VyIiB7CiAgICAgICAgICAgIGRlc2NyaXB0aW9uICJBIHBlcnNvbiB3aG8gdXNlcyB0aGUgc3lzdGVtIgogICAgICAgIH0KICAgIAogICAgICAgIHN5c3RlbSA9IHNvZnR3YXJlU3lzdGVtICJNeSBQcm9qZWN0IiB7CiAgICAgICAgICAgIGRlc2NyaXB0aW9uICJUaGUgc3lzdGVtIHdlJ3JlIGJ1aWxkaW5nIgogICAgCiAgICAgICAgICAgIHdlYmFwcCA9IGNvbnRhaW5lciAiV2ViIEFwcGxpY2F0aW9uIiB7CiAgICAgICAgICAgICAgICB0ZWNobm9sb2d5ICJBbmd1bGFyIgogICAgICAgICAgICB9CiAgICAKICAgICAgICAgICAgYXBpID0gY29udGFpbmVyICJBUEkgU2VydmljZSIgewogICAgICAgICAgICAgICAgdGVjaG5vbG9neSAiLk5FVCA4IgogICAgICAgICAgICB9CiAgICAKICAgICAgICAgICAgZGIgPSBjb250YWluZXIgIkRhdGFiYXNlIiB7CiAgICAgICAgICAgICAgICB0ZWNobm9sb2d5ICJQb3N0Z3JlU1FMIgogICAgICAgICAgICB9CiAgICAKICAgICAgICAgICAgdXNlciAtPiB3ZWJhcHAgIlVzZXMiCiAgICAgICAgICAgIHdlYmFwcCAtPiBhcGkgIkNhbGxzIgogICAgICAgICAgICBhcGkgLT4gZGIgIlJlYWRzL1dyaXRlcyIKICAgICAgICB9CiAgICB9CiAgICAhYWRycyAuL2FkciBhZHJ0b29scwoKICAgIHZpZXdzIHsKICAgICAgICBzeXN0ZW1Db250ZXh0IHN5c3RlbSB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvbGF5b3V0IGxyCiAgICAgICAgfQoKICAgICAgICBjb250YWluZXIgc3lzdGVtIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgIGF1dG9sYXlvdXQgbHIKICAgICAgICB9CgogICAgICAgIHRoZW1lIGRlZmF1bHQKICAgIH0KfQ=="
+  },
+  "views" : {
+    "configuration" : {
+      "branding" : { },
+      "lastSavedView" : "SystemContext-001",
+      "styles" : { },
+      "terminology" : { },
+      "themes" : [ "https://static.structurizr.com/themes/default/theme.json" ]
+    },
+    "containerViews" : [ {
+      "automaticLayout" : {
+        "applied" : false,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "3",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "4",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "5",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "generatedKey" : true,
+      "key" : "Container-001",
+      "order" : 2,
+      "relationships" : [ {
+        "id" : "6"
+      }, {
+        "id" : "8"
+      }, {
+        "id" : "9"
+      } ],
+      "softwareSystemId" : "2"
+    } ],
+    "systemContextViews" : [ {
+      "automaticLayout" : {
+        "applied" : false,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "2",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "enterpriseBoundaryVisible" : true,
+      "generatedKey" : true,
+      "key" : "SystemContext-001",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "7"
+      } ],
+      "softwareSystemId" : "2"
+    } ]
+  }
+}
