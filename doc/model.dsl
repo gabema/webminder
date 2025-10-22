@@ -1,25 +1,24 @@
+!identifiers hierarchical
+
 model {
     user = person "End User" {
-        description "A person who uses the system"
+        description "A person playing webminder"
     }
 
-    system = softwareSystem "My Project" {
-        description "The system we're building"
+    system = softwareSystem "Webminder PWA" {
+        description "Webminder web app"
 
         webapp = container "Web Application" {
-            technology "Angular"
+            technology ".NET Blazor"
+
+            view = component "Blazor App" {
+            }
+
+            domain = component "game logic"
+
+            view -> domain "sends actions"
         }
 
-        api = container "API Service" {
-            technology ".NET 8"
-        }
-
-        db = container "Database" {
-            technology "PostgreSQL"
-        }
-
-        user -> webapp "Uses"
-        webapp -> api "Calls"
-        api -> db "Reads/Writes"
+        user -> webapp.view "Uses"
     }
 }

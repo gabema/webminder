@@ -16,13 +16,28 @@
       "id" : "2",
       "status" : "Accepted",
       "title" : "Use Excalidraw as a digital whiteboard"
+    }, {
+      "content" : "# 3. Package as static Progressive Web App\n\nDate: 2025-10-22\n\n## Status\n\nAccepted\n\n## Context\n\nThe app needs to be delivered to users devices\nso they can play it.\n\n## Decision\n\nWe will deploy the application as a static progressive web app.\n\n## Consequences\n\nWhat becomes easier or more difficult to do and any risks introduced by the change that will need to be mitigated.\nMakes easier\n1. Easily accessible by a wide array of devices.\n1. Does not require deployment to app stores.\n1. Only requires a modern browser.\n\nMakes more difficult\n1. Making available offline will require additional effort.\n1. Requires supporting large number of screen sizes and a select set of modern browsers and javascript/web assembly runtimes.\n",
+      "date" : "2025-10-22T00:00:00Z",
+      "format" : "Markdown",
+      "id" : "3",
+      "status" : "Accepted",
+      "title" : "Package as static Progressive Web App"
+    }, {
+      "content" : "# 4. Implement as a DotNet blazor\n\nDate: 2025-10-22\n\n## Status\n\nAccepted\n\n## Context\n\nThe issue motivating this decision, and any context that influences or constrains the decision.\n\n## Decision\n\nThe change that we're proposing or have agreed to implement.\n\n## Consequences\n\nWhat becomes easier or more difficult to do and any risks introduced by the change that will need to be mitigated.\n",
+      "date" : "2025-10-22T00:00:00Z",
+      "format" : "Markdown",
+      "id" : "4",
+      "status" : "Accepted",
+      "title" : "Implement as a DotNet blazor"
     } ]
   },
   "id" : 1,
-  "lastModifiedDate" : "2025-10-17T17:27:40Z",
+  "lastModifiedAgent" : "structurizr-ui",
+  "lastModifiedDate" : "2025-10-22T04:29:13Z",
   "model" : {
     "people" : [ {
-      "description" : "A person who uses the system",
+      "description" : "A person playing webminder",
       "id" : "1",
       "location" : "Unspecified",
       "name" : "End User",
@@ -31,67 +46,65 @@
       },
       "relationships" : [ {
         "description" : "Uses",
-        "destinationId" : "3",
-        "id" : "6",
+        "destinationId" : "4",
+        "id" : "7",
         "sourceId" : "1",
         "tags" : "Relationship"
       }, {
         "description" : "Uses",
+        "destinationId" : "3",
+        "id" : "8",
+        "linkedRelationshipId" : "7",
+        "sourceId" : "1"
+      }, {
+        "description" : "Uses",
         "destinationId" : "2",
-        "id" : "7",
-        "linkedRelationshipId" : "6",
+        "id" : "9",
+        "linkedRelationshipId" : "7",
         "sourceId" : "1"
       } ],
       "tags" : "Element,Person"
     } ],
     "softwareSystems" : [ {
       "containers" : [ {
+        "components" : [ {
+          "documentation" : { },
+          "id" : "4",
+          "name" : "Blazor App",
+          "properties" : {
+            "structurizr.dsl.identifier" : "system.webapp.view"
+          },
+          "relationships" : [ {
+            "description" : "sends actions",
+            "destinationId" : "5",
+            "id" : "6",
+            "sourceId" : "4",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Component"
+        }, {
+          "documentation" : { },
+          "id" : "5",
+          "name" : "game logic",
+          "properties" : {
+            "structurizr.dsl.identifier" : "system.webapp.domain"
+          },
+          "tags" : "Element,Component"
+        } ],
         "documentation" : { },
         "id" : "3",
         "name" : "Web Application",
         "properties" : {
-          "structurizr.dsl.identifier" : "webapp"
-        },
-        "relationships" : [ {
-          "description" : "Calls",
-          "destinationId" : "4",
-          "id" : "8",
-          "sourceId" : "3",
-          "tags" : "Relationship"
-        } ],
-        "tags" : "Element,Container",
-        "technology" : "Angular"
-      }, {
-        "documentation" : { },
-        "id" : "4",
-        "name" : "API Service",
-        "properties" : {
-          "structurizr.dsl.identifier" : "api"
-        },
-        "relationships" : [ {
-          "description" : "Reads/Writes",
-          "destinationId" : "5",
-          "id" : "9",
-          "sourceId" : "4",
-          "tags" : "Relationship"
-        } ],
-        "tags" : "Element,Container",
-        "technology" : ".NET 8"
-      }, {
-        "documentation" : { },
-        "id" : "5",
-        "name" : "Database",
-        "properties" : {
-          "structurizr.dsl.identifier" : "db"
+          "structurizr.dsl.identifier" : "system.webapp"
         },
         "tags" : "Element,Container",
-        "technology" : "PostgreSQL"
+        "technology" : ".NET Blazor"
       } ],
-      "description" : "The system we're building",
+      "description" : "Webminder web app",
       "documentation" : { },
       "id" : "2",
       "location" : "Unspecified",
-      "name" : "My Project",
+      "name" : "Webminder PWA",
       "properties" : {
         "structurizr.dsl.identifier" : "system"
       },
@@ -100,19 +113,58 @@
   },
   "name" : "My Project Workspace",
   "properties" : {
-    "structurizr.dsl" : "d29ya3NwYWNlICJNeSBQcm9qZWN0IFdvcmtzcGFjZSIgIkFyY2hpdGVjdHVyZSBkb2N1bWVudGF0aW9uIGZvciBNeSBQcm9qZWN0IiB7CgogICAgbW9kZWwgewogICAgICAgIHVzZXIgPSBwZXJzb24gIkVuZCBVc2VyIiB7CiAgICAgICAgICAgIGRlc2NyaXB0aW9uICJBIHBlcnNvbiB3aG8gdXNlcyB0aGUgc3lzdGVtIgogICAgICAgIH0KICAgIAogICAgICAgIHN5c3RlbSA9IHNvZnR3YXJlU3lzdGVtICJNeSBQcm9qZWN0IiB7CiAgICAgICAgICAgIGRlc2NyaXB0aW9uICJUaGUgc3lzdGVtIHdlJ3JlIGJ1aWxkaW5nIgogICAgCiAgICAgICAgICAgIHdlYmFwcCA9IGNvbnRhaW5lciAiV2ViIEFwcGxpY2F0aW9uIiB7CiAgICAgICAgICAgICAgICB0ZWNobm9sb2d5ICJBbmd1bGFyIgogICAgICAgICAgICB9CiAgICAKICAgICAgICAgICAgYXBpID0gY29udGFpbmVyICJBUEkgU2VydmljZSIgewogICAgICAgICAgICAgICAgdGVjaG5vbG9neSAiLk5FVCA4IgogICAgICAgICAgICB9CiAgICAKICAgICAgICAgICAgZGIgPSBjb250YWluZXIgIkRhdGFiYXNlIiB7CiAgICAgICAgICAgICAgICB0ZWNobm9sb2d5ICJQb3N0Z3JlU1FMIgogICAgICAgICAgICB9CiAgICAKICAgICAgICAgICAgdXNlciAtPiB3ZWJhcHAgIlVzZXMiCiAgICAgICAgICAgIHdlYmFwcCAtPiBhcGkgIkNhbGxzIgogICAgICAgICAgICBhcGkgLT4gZGIgIlJlYWRzL1dyaXRlcyIKICAgICAgICB9CiAgICB9CiAgICAhYWRycyAuL2FkciBhZHJ0b29scwoKICAgIHZpZXdzIHsKICAgICAgICBzeXN0ZW1Db250ZXh0IHN5c3RlbSB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvbGF5b3V0IGxyCiAgICAgICAgfQoKICAgICAgICBjb250YWluZXIgc3lzdGVtIHsKICAgICAgICAgICAgaW5jbHVkZSAqCiAgICAgICAgICAgIGF1dG9sYXlvdXQgbHIKICAgICAgICB9CgogICAgICAgIHRoZW1lIGRlZmF1bHQKICAgIH0KfQ=="
+    "structurizr.dsl" : "d29ya3NwYWNlICJNeSBQcm9qZWN0IFdvcmtzcGFjZSIgIkFyY2hpdGVjdHVyZSBkb2N1bWVudGF0aW9uIGZvciBNeSBQcm9qZWN0IiB7CgogICAgIWlkZW50aWZpZXJzIGhpZXJhcmNoaWNhbAogICAgCiAgICBtb2RlbCB7CiAgICAgICAgdXNlciA9IHBlcnNvbiAiRW5kIFVzZXIiIHsKICAgICAgICAgICAgZGVzY3JpcHRpb24gIkEgcGVyc29uIHBsYXlpbmcgd2VibWluZGVyIgogICAgICAgIH0KICAgIAogICAgICAgIHN5c3RlbSA9IHNvZnR3YXJlU3lzdGVtICJXZWJtaW5kZXIgUFdBIiB7CiAgICAgICAgICAgIGRlc2NyaXB0aW9uICJXZWJtaW5kZXIgd2ViIGFwcCIKICAgIAogICAgICAgICAgICB3ZWJhcHAgPSBjb250YWluZXIgIldlYiBBcHBsaWNhdGlvbiIgewogICAgICAgICAgICAgICAgdGVjaG5vbG9neSAiLk5FVCBCbGF6b3IiCiAgICAKICAgICAgICAgICAgICAgIHZpZXcgPSBjb21wb25lbnQgIkJsYXpvciBBcHAiIHsKICAgICAgICAgICAgICAgIH0KICAgIAogICAgICAgICAgICAgICAgZG9tYWluID0gY29tcG9uZW50ICJnYW1lIGxvZ2ljIgogICAgCiAgICAgICAgICAgICAgICB2aWV3IC0+IGRvbWFpbiAic2VuZHMgYWN0aW9ucyIKICAgICAgICAgICAgfQogICAgCiAgICAgICAgICAgIHVzZXIgLT4gd2ViYXBwLnZpZXcgIlVzZXMiCiAgICAgICAgfQogICAgfQogICAgIWFkcnMgLi9hZHIgYWRydG9vbHMKCiAgICB2aWV3cyB7CiAgICAgICAgc3lzdGVtQ29udGV4dCBzeXN0ZW0gewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgYXV0b2xheW91dCBscgogICAgICAgIH0KCiAgICAgICAgY29udGFpbmVyIHN5c3RlbSB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvbGF5b3V0IGxyCiAgICAgICAgfQoKICAgICAgICBjb21wb25lbnQgc3lzdGVtLndlYmFwcCB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvbGF5b3V0IGxyCiAgICAgICAgfQoKICAgICAgICB0aGVtZSBkZWZhdWx0CiAgICB9Cn0="
   },
   "views" : {
+    "componentViews" : [ {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "containerId" : "3",
+      "dimensions" : {
+        "height" : 820,
+        "width" : 2370
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 200,
+        "y" : 185
+      }, {
+        "id" : "4",
+        "x" : 950,
+        "y" : 185
+      }, {
+        "id" : "5",
+        "x" : 1700,
+        "y" : 185
+      } ],
+      "externalContainerBoundariesVisible" : false,
+      "generatedKey" : true,
+      "key" : "Component-001",
+      "order" : 3,
+      "relationships" : [ {
+        "id" : "6"
+      }, {
+        "id" : "7"
+      } ]
+    } ],
     "configuration" : {
       "branding" : { },
-      "lastSavedView" : "SystemContext-001",
+      "lastSavedView" : "Container-001",
+      "metadataSymbols" : "SquareBrackets",
       "styles" : { },
       "terminology" : { },
       "themes" : [ "https://static.structurizr.com/themes/default/theme.json" ]
     },
     "containerViews" : [ {
       "automaticLayout" : {
-        "applied" : false,
+        "applied" : true,
         "edgeSeparation" : 0,
         "implementation" : "Graphviz",
         "nodeSeparation" : 300,
@@ -120,39 +172,31 @@
         "rankSeparation" : 300,
         "vertices" : false
       },
+      "dimensions" : {
+        "height" : 820,
+        "width" : 1620
+      },
       "elements" : [ {
         "id" : "1",
-        "x" : 0,
-        "y" : 0
+        "x" : 200,
+        "y" : 185
       }, {
         "id" : "3",
-        "x" : 0,
-        "y" : 0
-      }, {
-        "id" : "4",
-        "x" : 0,
-        "y" : 0
-      }, {
-        "id" : "5",
-        "x" : 0,
-        "y" : 0
+        "x" : 950,
+        "y" : 185
       } ],
       "externalSoftwareSystemBoundariesVisible" : false,
       "generatedKey" : true,
       "key" : "Container-001",
       "order" : 2,
       "relationships" : [ {
-        "id" : "6"
-      }, {
         "id" : "8"
-      }, {
-        "id" : "9"
       } ],
       "softwareSystemId" : "2"
     } ],
     "systemContextViews" : [ {
       "automaticLayout" : {
-        "applied" : false,
+        "applied" : true,
         "edgeSeparation" : 0,
         "implementation" : "Graphviz",
         "nodeSeparation" : 300,
@@ -160,21 +204,25 @@
         "rankSeparation" : 300,
         "vertices" : false
       },
+      "dimensions" : {
+        "height" : 800,
+        "width" : 1600
+      },
       "elements" : [ {
         "id" : "1",
-        "x" : 0,
-        "y" : 0
+        "x" : 200,
+        "y" : 165
       }, {
         "id" : "2",
-        "x" : 0,
-        "y" : 0
+        "x" : 950,
+        "y" : 165
       } ],
       "enterpriseBoundaryVisible" : true,
       "generatedKey" : true,
       "key" : "SystemContext-001",
       "order" : 1,
       "relationships" : [ {
-        "id" : "7"
+        "id" : "9"
       } ],
       "softwareSystemId" : "2"
     } ]

@@ -14,6 +14,11 @@ workspace "My Project Workspace" "Architecture documentation for My Project" {
             autolayout lr
         }
 
+        component system.webapp {
+            include *
+            autolayout lr
+        }
+
         theme default
     }
 }
