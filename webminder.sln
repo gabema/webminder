@@ -3,6 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B071E042-4B3C-4C13-B504-6537EF1EF804}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webminder.domain", "src\webminder.domain\webminder.domain.csproj", "{D81B29FC-F8DD-4567-9B2D-52C91FB6B517}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{1B21ABE8-82DB-4EFA-907F-82D51CA96F88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webminder.unittests", "test\webminder.unittests\webminder.unittests.csproj", "{D7CE4F72-D803-4668-A7B8-BF8A7C1D5064}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -10,5 +18,19 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D81B29FC-F8DD-4567-9B2D-52C91FB6B517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D81B29FC-F8DD-4567-9B2D-52C91FB6B517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D81B29FC-F8DD-4567-9B2D-52C91FB6B517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D81B29FC-F8DD-4567-9B2D-52C91FB6B517}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7CE4F72-D803-4668-A7B8-BF8A7C1D5064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7CE4F72-D803-4668-A7B8-BF8A7C1D5064}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7CE4F72-D803-4668-A7B8-BF8A7C1D5064}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7CE4F72-D803-4668-A7B8-BF8A7C1D5064}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D81B29FC-F8DD-4567-9B2D-52C91FB6B517} = {B071E042-4B3C-4C13-B504-6537EF1EF804}
+		{D7CE4F72-D803-4668-A7B8-BF8A7C1D5064} = {1B21ABE8-82DB-4EFA-907F-82D51CA96F88}
 	EndGlobalSection
 EndGlobal

@@ -33,8 +33,7 @@
     } ]
   },
   "id" : 1,
-  "lastModifiedAgent" : "structurizr-ui",
-  "lastModifiedDate" : "2025-10-22T04:29:13Z",
+  "lastModifiedDate" : "2025-10-25T05:16:39Z",
   "model" : {
     "people" : [ {
       "description" : "A person playing webminder",
@@ -118,7 +117,7 @@
   "views" : {
     "componentViews" : [ {
       "automaticLayout" : {
-        "applied" : true,
+        "applied" : false,
         "edgeSeparation" : 0,
         "implementation" : "Graphviz",
         "nodeSeparation" : 300,
@@ -127,22 +126,18 @@
         "vertices" : false
       },
       "containerId" : "3",
-      "dimensions" : {
-        "height" : 820,
-        "width" : 2370
-      },
       "elements" : [ {
         "id" : "1",
-        "x" : 200,
-        "y" : 185
+        "x" : 0,
+        "y" : 0
       }, {
         "id" : "4",
-        "x" : 950,
-        "y" : 185
+        "x" : 0,
+        "y" : 0
       }, {
         "id" : "5",
-        "x" : 1700,
-        "y" : 185
+        "x" : 0,
+        "y" : 0
       } ],
       "externalContainerBoundariesVisible" : false,
       "generatedKey" : true,
@@ -157,14 +152,13 @@
     "configuration" : {
       "branding" : { },
       "lastSavedView" : "Container-001",
-      "metadataSymbols" : "SquareBrackets",
       "styles" : { },
       "terminology" : { },
       "themes" : [ "https://static.structurizr.com/themes/default/theme.json" ]
     },
     "containerViews" : [ {
       "automaticLayout" : {
-        "applied" : true,
+        "applied" : false,
         "edgeSeparation" : 0,
         "implementation" : "Graphviz",
         "nodeSeparation" : 300,
@@ -172,18 +166,14 @@
         "rankSeparation" : 300,
         "vertices" : false
       },
-      "dimensions" : {
-        "height" : 820,
-        "width" : 1620
-      },
       "elements" : [ {
         "id" : "1",
-        "x" : 200,
-        "y" : 185
+        "x" : 0,
+        "y" : 0
       }, {
         "id" : "3",
-        "x" : 950,
-        "y" : 185
+        "x" : 0,
+        "y" : 0
       } ],
       "externalSoftwareSystemBoundariesVisible" : false,
       "generatedKey" : true,
@@ -196,7 +186,7 @@
     } ],
     "systemContextViews" : [ {
       "automaticLayout" : {
-        "applied" : true,
+        "applied" : false,
         "edgeSeparation" : 0,
         "implementation" : "Graphviz",
         "nodeSeparation" : 300,
@@ -204,18 +194,14 @@
         "rankSeparation" : 300,
         "vertices" : false
       },
-      "dimensions" : {
-        "height" : 800,
-        "width" : 1600
-      },
       "elements" : [ {
         "id" : "1",
-        "x" : 200,
-        "y" : 165
+        "x" : 0,
+        "y" : 0
       }, {
         "id" : "2",
-        "x" : 950,
-        "y" : 165
+        "x" : 0,
+        "y" : 0
       } ],
       "enterpriseBoundaryVisible" : true,
       "generatedKey" : true,

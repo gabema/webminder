@@ -17,7 +17,7 @@ Links:
 ## Podman setup
 ```
 podman build -t structurizr-adr .
-podman run -it --rm -p 8080:8080 -v c:\Users\gabe_\code\starter-project\doc:/usr/local/structurizr structurizr-adr
+podman run -it --rm -p 8080:8080 -v /Users/gabe/src/webminder/doc:/usr/local/structurizr structurizr-adr
 ```
 
 ## adr-tools setup

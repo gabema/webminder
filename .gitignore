@@ -2,3 +2,5 @@
 
 # dependencies
 .structurizr/
+obj/
+bin/
