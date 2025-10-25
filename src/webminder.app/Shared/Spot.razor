@@ -1,0 +1,26 @@
+@using Microsoft.AspNetCore.Components
+
+<div class="spot" style="background-color:@ColorFor(Color);" @onclick="HandleClick"></div>
+
+@code {
+    [Parameter]
+    public PieceColor Color { get; set; }
+
+    [Parameter]
+    public EventCallback OnClick { get; set; }
+
+    private Task HandleClick() => OnClick.InvokeAsync();
+
+    private static string ColorFor(PieceColor pc) => pc switch
+    {
+        PieceColor.None => "#ffffff",
+        PieceColor.Red => "#e74c3c",
+        PieceColor.Blue => "#3498db",
+        PieceColor.White => "#ffffff",
+        PieceColor.Black => "#34495e",
+        PieceColor.Purple => "#9b59b6",
+        PieceColor.Yellow => "#f39c12",
+        PieceColor.Green => "#2ecc71",
+        _ => "transparent",
+    };
+}

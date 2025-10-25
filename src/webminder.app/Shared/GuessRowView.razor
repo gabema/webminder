@@ -1,0 +1,26 @@
+@using Microsoft.AspNetCore.Components
+
+<div class="guess-row">
+    <div class="spots">
+        @for (int i = 0; i < Row.Spots.Length; i++)
+        {
+            <Spot Color="Row.Spots[i]" OnClick="(()=>OnSpotClicked.InvokeAsync(i))" />
+        }
+    </div>
+
+    <div class="pins">
+        @foreach (var pin in Row.Pins.Where(p => p != domain.Pin.None))
+        {
+            <FeedbackPin IsBlack="@(pin == domain.Pin.Black)" />
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public domain.GuessRow Row { get; set; } = domain.GuessRow.Empty;
+
+    // Index of the spot clicked within this row
+    [Parameter]
+    public EventCallback<int> OnSpotClicked { get; set; }
+}
