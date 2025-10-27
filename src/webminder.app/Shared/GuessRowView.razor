@@ -4,7 +4,7 @@
     <div class="spots">
         @for (int i = 0; i < Row.Spots.Length; i++)
         {
-            <Spot Color="Row.Spots[i]" OnClick="(()=>OnSpotClicked.InvokeAsync(i))" />
+            <Spot Color="@Row.Spots[i]" OnClick="@(() => OnSpotClicked.InvokeAsync(i))" />
         }
     </div>
 

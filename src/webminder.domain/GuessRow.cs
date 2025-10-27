@@ -10,6 +10,31 @@ public record GuessRow(
         [Pin.None, Pin.None, Pin.None, Pin.None]
     );
 
+    public GuessRow RotateSpot(int index)
+    {
+        var newSpots = Spots.ToArray();
+        newSpots[index] = newSpots[index] switch
+        {
+            PieceColor.None => PieceColor.Red,
+            PieceColor.Red => PieceColor.Green,
+            PieceColor.Green => PieceColor.Blue,
+            PieceColor.Blue => PieceColor.Yellow,
+            PieceColor.Yellow => PieceColor.Purple,
+            PieceColor.Purple => PieceColor.Black,
+            PieceColor.Black => PieceColor.White,
+            PieceColor.White => PieceColor.Red,
+            _ => PieceColor.None
+        };
+        return this with { Spots = newSpots };
+    }
+
+    public GuessRow WithSpot(int index, PieceColor color)
+    {
+        var newSpots = Spots.ToArray();
+        newSpots[index] = color;
+        return this with { Spots = newSpots };
+    }
+
     // If a Spot in GuessRow matches a spot in the solution add a Black Pin.
     // If a Spot in GuessRow is the same color as in the solution but at a different index add a White Pin.
     // Otherwise add a None Pin.

@@ -1,4 +1,5 @@
 @page "/"
+@using webminder.app.Shared
 
 <PageTitle>Webminder</PageTitle>
 
@@ -6,89 +7,55 @@
     <header class="board-header">Webminder</header>
 
     <div class="board">
-        @for (int r = 0; r < Guesses.Count; r++)
+        @for (int displayIndex = 0; displayIndex < GameBoard.GuessRows.Count; displayIndex++)
         {
-            <GuessRowView Row="Guesses[r]" OnSpotClicked="@( (int i) => CycleColor(r, i) )" />
-        }
-    </div>
+            var boardIndex = GameBoard.GuessRows.Count - 1 - displayIndex; // display newest first
+            var di = displayIndex; // capture loop variable for closures
+            <div class="guess-row-wrapper d-flex align-items-start">
+                <GuessRowView Row="GameBoard.GuessRows[boardIndex]" OnSpotClicked="@( (int i) => CycleColor(di, i) )" />
 
-    <div class="controls">
-        <button class="btn btn-primary" @onclick="AddRow">Add Row</button>
-        <button class="btn btn-link" @onclick="RevealSolution">Reveal Solution</button>
+                @if (boardIndex == GameBoard.CurrentRow)
+                {
+                    <button class="btn btn-outline-secondary ms-2" title="Resolve current guess" @onclick="() => ResolveCurrent()">?</button>
+                }
+            </div>
+        }
     </div>
 </div>
 
 @code {
-    private static readonly PieceColor[] PaletteOrder = new[]
-    {
-        PieceColor.None,
-        PieceColor.Red,
-        PieceColor.Yellow,
-        PieceColor.Green,
-        PieceColor.Blue,
-        PieceColor.Purple,
-        PieceColor.Black,
-        PieceColor.White
-    };
-
-    // The solution row being guessed against
-    private SolutionRow Solution { get; set; } = new(
-        new[] { PieceColor.Red, PieceColor.Yellow, PieceColor.Blue, PieceColor.Green }
-    );
-
-    // List of guesses and their resolved pins
-    private List<GuessRow> Guesses { get; set; } = new();
+    // The game board (holds guesses, current row and solution)
+    private Board GameBoard { get; set; } = Board.New(SolutionRow.Empty);
 
     protected override void OnInitialized()
     {
-        // Initialize with some sample guesses
-        Guesses.AddRange(new[] {
-            new GuessRow(
-                new[] { PieceColor.Yellow, PieceColor.Green, PieceColor.Black, PieceColor.Purple },
-                new[] { domain.Pin.None, domain.Pin.None, domain.Pin.None, domain.Pin.None }
-            ).Resolve(Solution),
-            new GuessRow(
-                new[] { PieceColor.Black, PieceColor.Black, PieceColor.Black, PieceColor.Black },
-                new[] { domain.Pin.None, domain.Pin.None, domain.Pin.None, domain.Pin.None }
-            ).Resolve(Solution),
-            new GuessRow(
-                new[] { PieceColor.Purple, PieceColor.Blue, PieceColor.Green, PieceColor.Red },
-                new[] { domain.Pin.None, domain.Pin.None, domain.Pin.None, domain.Pin.None }
-            ).Resolve(Solution)
-        });
+        GameBoard = Board.New(SolutionRow.Random());
     }
 
-    private void CycleColor(int row, int spot)
+    private void CycleColor(int displayRow, int spot)
     {
-        var guess = Guesses[row];
-        var spots = guess.Spots.ToArray(); // create new array to modify
-        
-        var current = spots[spot];
-        var idx = Array.IndexOf(PaletteOrder, current);
-        if (idx < 0) idx = 0;
-        idx = (idx + 1) % PaletteOrder.Length;
-        spots[spot] = PaletteOrder[idx];
+        // map displayed row (newest-first) to board index
+        var boardIndex = GameBoard.GuessRows.Count - 1 - displayRow;
 
-        // Create new guess with updated spots and resolve against solution
-        Guesses[row] = new GuessRow(spots, Array.Empty<domain.Pin>()).Resolve(Solution);
-    }
-
-    private void AddRow()
-    {
-        var newGuess = new GuessRow(
-            new[] { PieceColor.None, PieceColor.None, PieceColor.None, PieceColor.None },
-            new[] { domain.Pin.None, domain.Pin.None, domain.Pin.None, domain.Pin.None }
-        ).Resolve(Solution);
-
-        Guesses.Insert(0, newGuess);
-    }
-
-    private void RevealSolution()
-    {
-        if (Guesses.Count > 0)
+        // Only allow cycling on the current board row
+        if (boardIndex != GameBoard.CurrentRow)
         {
-            var revealed = new GuessRow(Solution.Spots, Array.Empty<domain.Pin>()).Resolve(Solution);
-            Guesses[0] = revealed;
+            return;
         }
+
+        // Bounds check for safety (avoid IndexOutOfRange from corrupted indices)
+        var guess = GameBoard.GuessRows[boardIndex];
+        if (spot < 0 || spot >= guess.Spots.Length)
+        {
+            return;
+        }
+
+        // Replace the guess on the board and rotate the clicked spot
+        GameBoard.GuessRows[boardIndex] = guess.RotateSpot(spot);
+    }
+
+    private void ResolveCurrent()
+    {
+        GameBoard = GameBoard.ResolveGuess();
     }
 }
