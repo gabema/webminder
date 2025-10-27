@@ -46,6 +46,11 @@ public class GuessRowTests
                 [Pin.Black, Pin.Black, Pin.White, Pin.None]
             },
             {
+                [PieceColor.Green, PieceColor.Black, PieceColor.Black, PieceColor.White],
+                [PieceColor.Black, PieceColor.Black, PieceColor.Blue, PieceColor.Green],
+                [Pin.Black, Pin.White, Pin.White, Pin.None]
+            },
+            {
                 [PieceColor.Black, PieceColor.Black, PieceColor.Green, PieceColor.White],
                 [PieceColor.Black, PieceColor.Black, PieceColor.Green, PieceColor.White],
                 [Pin.Black, Pin.Black, Pin.Black, Pin.Black]

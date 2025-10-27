@@ -75,14 +75,6 @@ public record GuessRow(
         {
             pins.Add(Pin.None);
         }
-
-        // Convert the List<Pin> to an array for the record's Pins property.
-        // You can obtain a Span<Pin> from that array with .AsSpan() if needed:
-        //   var span = pins.ToArray().AsSpan();
-        // Alternatively, for high-performance scenarios and when you understand
-        // the lifetime implications, you can use CollectionsMarshal.AsSpan(pins)
-        // (in System.Runtime.InteropServices) to get a Span over the list's
-        // internal buffer without copying.
         pins.Sort();
         return this with { Pins = pins.ToArray() };
     }
