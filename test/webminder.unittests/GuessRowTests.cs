@@ -1,18 +1,18 @@
-using webminder.domain;
-
 namespace webminder.unittests;
+
+using webminder.domain;
 
 public class GuessRowTests
 {
     [Theory]
     [MemberData(nameof(TestData))]
-    public void Test1(PieceColor[] solutionSpots, PieceColor[] spots, Pin[] expectedPins)
+    public void TestScenarios(PieceColor[] solutionSpots, PieceColor[] spots, Pin[] expectedPins)
     {
         // Assign
         var solution = new SolutionRow(Spots: solutionSpots);
         var guessRow = new GuessRow(
             Spots: spots,
-            Pins: [Pin.None, Pin.None, Pin.None, Pin.None]);
+            Pins: TestConstants.EMPTY_PINS);
 
         // Act
         guessRow = guessRow.Resolve(solution);
@@ -28,7 +28,7 @@ public class GuessRowTests
             {
                 [PieceColor.Black, PieceColor.Black, PieceColor.Black, PieceColor.Black],
                 [PieceColor.Purple, PieceColor.Purple, PieceColor.Purple, PieceColor.Purple],
-                [Pin.None, Pin.None, Pin.None, Pin.None]
+                TestConstants.EMPTY_PINS
             },
             {
                 [PieceColor.Black, PieceColor.Blue, PieceColor.Green, PieceColor.Purple],
